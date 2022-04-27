@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["src/Apw.ToDo.Api/Apw.ToDo.Api.csproj", "src/Apw.ToDo.Api/"]
-RUN dotnet restore "src/Apw.ToDo.Api/Apw.ToDo.Api.csproj"
+COPY ["Apw.ToDo.Api/Apw.ToDo.Api.csproj", "Apw.ToDo.Api/"]
+RUN dotnet restore "Apw.ToDo.Api/Apw.ToDo.Api.csproj"
 COPY . .
-WORKDIR "/src/src/Apw.ToDo.Api"
+WORKDIR "/src/Apw.ToDo.Api"
 RUN dotnet build "Apw.ToDo.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
